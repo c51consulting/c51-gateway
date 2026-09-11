@@ -1,0 +1,30 @@
+name: Build Rachna partner PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - rachna-partner-report.html
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for GitHub Pages
+        run: sleep 20
+      - name: Generate PDF
+        run: |
+          google-chrome --headless --no-sandbox --disable-gpu \
+            --print-to-pdf="Council-Reporting-Studio-Rachna-Partner-Report.pdf" \
+            --print-to-pdf-no-header \
+            "https://c51consulting.github.io/c51-gateway/rachna-partner-report.html"
+          test -s Council-Reporting-Studio-Rachna-Partner-Report.pdf
+      - name: Commit PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Council-Reporting-Studio-Rachna-Partner-Report.pdf
+          git diff --cached --quiet || git commit -m "Build Rachna partner PDF"
+          git push
