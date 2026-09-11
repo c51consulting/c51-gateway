@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Council Reporting Workspace — Review Demonstrator</title>
+<meta name="description" content="An anonymised evidence-led council corporate reporting workflow demonstrator.">
+<style>
+:root{--navy:#102a43;--ink:#243b53;--muted:#627d98;--line:#d9e2ec;--bg:#f4f7fa;--card:#fff;--teal:#087f8c;--blue:#1769aa;--amber:#c27803;--red:#b42318;--green:#26734d}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+button,select{font:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}
+aside{background:var(--navy);color:#fff;padding:24px 18px;position:sticky;top:0;height:100vh}
+.brand{font-weight:750;font-size:20px;margin-bottom:4px}.demo{font-size:13px;color:#bcccdc;margin-bottom:30px}
+nav button{width:100%;border:0;background:transparent;color:#d9e2ec;text-align:left;padding:11px 12px;border-radius:8px;margin:3px 0;cursor:pointer}
+nav button.active,nav button:hover{background:#1f4664;color:#fff}.aside-note{position:absolute;bottom:22px;left:18px;right:18px;font-size:12px;color:#9fb3c8}
+main{min-width:0}.topbar{background:#fff;border-bottom:1px solid var(--line);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
+.title{font-weight:700}.sample{font-size:13px;color:var(--muted);background:#edf2f7;padding:6px 10px;border-radius:99px}
+.content{padding:28px;max-width:1420px;margin:auto}.view{display:none}.view.active{display:block}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px;color:var(--navy)}.lead{margin:0 0 24px;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.metric,.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px #102a4310}
+.metric{padding:18px}.metric b{display:block;font-size:30px;color:var(--navy)}.metric span{font-size:14px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1.7fr 1fr;gap:18px}.panel{padding:20px}.panel h2{font-size:18px;margin:0 0 15px;color:var(--navy)}
+table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:10px;border-bottom:1px solid var(--line)}
+td{padding:12px 10px;border-bottom:1px solid #edf2f7;vertical-align:top}.tag{display:inline-block;font-size:12px;font-weight:650;padding:4px 8px;border-radius:99px}
+.on{background:#e4f5ec;color:var(--green)}.risk{background:#fff3d6;color:#8c5a00}.off{background:#feeceb;color:var(--red)}.review{background:#e7f1fb;color:#155b8e}
+.progress{height:8px;background:#e9eff5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:var(--teal)}
+.list{display:grid;gap:10px}.item{padding:13px;border:1px solid var(--line);border-radius:9px}.item strong{display:block}.meta{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar select,.toolbar button,.action{border:1px solid #bcccdc;background:#fff;padding:8px 11px;border-radius:7px;cursor:pointer}
+.action{color:#fff;background:var(--blue);border-color:var(--blue);font-size:13px}.action.done{background:var(--green);border-color:var(--green)}
+.callout{border-left:4px solid var(--amber);background:#fff8e6;padding:14px 16px;margin:18px 0;border-radius:0 8px 8px 0}
+.workflow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.step{background:#fff;border:1px solid var(--line);padding:14px;border-radius:10px}.step b{display:block;color:var(--navy);margin-bottom:5px}
+.executive{background:linear-gradient(135deg,#102a43,#174f68);color:#fff;border-radius:14px;padding:26px;margin-bottom:18px}.executive h2{margin:0 0 8px}.executive p{max-width:780px;color:#d9e2ec}
+.barrow{display:grid;grid-template-columns:180px 1fr 48px;align-items:center;gap:10px;margin:13px 0}.bar{height:12px;background:#e6edf3;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal)}
+.foot{font-size:12px;color:var(--muted);margin-top:24px}.empty{padding:30px;text-align:center;color:var(--muted)}
+@media(max-width:900px){.shell{grid-template-columns:1fr}aside{height:auto;position:static}.aside-note{display:none}nav{display:flex;overflow:auto}nav button{width:auto;white-space:nowrap}.metrics{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.topbar,.content{padding:18px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside><div class="brand">CouncilFlow</div><div class="demo">Review demonstrator</div>
+<nav>
+<button class="active" data-view="dashboard">Overview</button>
+<button data-view="workflow">Reporting workflow</button>
+<button data-view="evidence">Evidence register</button>
+<button data-view="exceptions">Exceptions</button>
+<button data-view="executive">Executive brief</button>
+</nav>
+<div class="aside-note">Anonymised synthetic council data<br>Prepared for workflow validation</div></aside>
+<main><div class="topbar"><div class="title">North Valley Regional Council</div><div class="sample">Synthetic review environment</div></div>
+<div class="content">
+<section id="dashboard" class="view active">
+<h1>Corporate reporting overview</h1><p class="lead">Quarter 1 · Delivery confidence based on submitted progress and supporting evidence.</p>
+<div class="metrics"><div class="metric"><b>68%</b><span>Commitments on track</span></div><div class="metric"><b>7</b><span>Updates requiring review</span></div><div class="metric"><b>5</b><span>Evidence gaps</span></div><div class="metric"><b>3</b><span>Material exceptions</span></div></div>
+<div class="grid">
+<div class="panel"><h2>Delivery commitments</h2><table><thead><tr><th>Commitment</th><th>Owner</th><th>Progress</th><th>Status</th></tr></thead><tbody id="commitments"></tbody></table></div>
+<div class="panel"><h2>Priority attention</h2><div class="list">
+<div class="item"><strong>Community facilities renewal</strong><span class="meta">Milestone reported complete; approval evidence missing.</span></div>
+<div class="item"><strong>Development assessment turnaround</strong><span class="meta">Performance result conflicts with source-system extract.</span></div>
+<div class="item"><strong>Road maintenance program</strong><span class="meta">Quarterly update overdue by 8 days.</span></div>
+</div></div></div>
+</section>
+<section id="workflow" class="view">
+<h1>Reporting workflow</h1><p class="lead">A controlled path from operational updates to an approved executive report.</p>
+<div class="workflow"><div class="step"><b>1 · Gather</b>Import structured updates and evidence references from business units.</div><div class="step"><b>2 · Validate</b>Check completeness, reporting period, owner and source integrity.</div><div class="step"><b>3 · Reconcile</b>Compare narrative claims with milestones, measures and evidence.</div><div class="step"><b>4 · Review</b>Route exceptions to the responsible officer and accountable executive.</div><div class="step"><b>5 · Report</b>Publish an approved view with a traceable decision record.</div></div>
+<div class="panel"><h2>Current reporting cycle</h2><table><thead><tr><th>Stage</th><th>Records</th><th>Control</th><th>State</th></tr></thead><tbody>
+<tr><td>Business-unit submissions</td><td>34 of 38</td><td>Owner and period confirmed</td><td><span class="tag risk">4 overdue</span></td></tr>
+<tr><td>Evidence validation</td><td>29 of 34</td><td>Source reference attached</td><td><span class="tag risk">5 gaps</span></td></tr>
+<tr><td>Management review</td><td>27 of 34</td><td>Reviewer decision recorded</td><td><span class="tag review">7 pending</span></td></tr>
+<tr><td>Executive approval</td><td>24 of 34</td><td>Approved version retained</td><td><span class="tag on">In progress</span></td></tr>
+</tbody></table></div>
+<div class="callout"><b>Review question:</b> Which step currently creates the most manual chasing, re-keying or judgement for a council reporting team?</div>
+</section>
+<section id="evidence" class="view">
+<h1>Evidence register</h1><p class="lead">Every reported result is linked to a source, reviewer and decision state.</p>
+<div class="toolbar"><select id="evidenceFilter"><option value="all">All evidence</option><option value="Verified">Verified</option><option value="Review">Needs review</option><option value="Missing">Missing</option></select></div>
+<div class="panel"><table><thead><tr><th>Evidence</th><th>Commitment</th><th>Source</th><th>Updated</th><th>State</th><th></th></tr></thead><tbody id="evidenceRows"></tbody></table></div>
+</section>
+<section id="exceptions" class="view">
+<h1>Exception queue</h1><p class="lead">Focus review time on claims that are late, unsupported or inconsistent.</p>
+<div class="panel"><table><thead><tr><th>Exception</th><th>Why flagged</th><th>Owner</th><th>Age</th><th>Action</th></tr></thead><tbody>
+<tr><td>EX-014 · Facilities milestone</td><td>Completion claim has no approval record</td><td>Assets</td><td>3 days</td><td><button class="action" onclick="resolve(this,'Evidence requested')">Request evidence</button></td></tr>
+<tr><td>EX-011 · DA processing measure</td><td>Narrative says improved; source extract shows deterioration</td><td>Planning</td><td>5 days</td><td><button class="action" onclick="resolve(this,'Clarification requested')">Request clarification</button></td></tr>
+<tr><td>EX-008 · Roads quarterly update</td><td>Responsible officer has not submitted the period update</td><td>Infrastructure</td><td>8 days</td><td><button class="action" onclick="resolve(this,'Reminder recorded')">Record reminder</button></td></tr>
+</tbody></table></div>
+</section>
+<section id="executive" class="view">
+<div class="executive"><h2>Quarterly executive brief</h2><p>Overall delivery remains stable, but three material exceptions require management attention before the report can be approved. Confidence is constrained by five evidence gaps and four overdue submissions.</p></div>
+<div class="grid"><div class="panel"><h2>Outcome confidence</h2>
+<div class="barrow"><span>Community wellbeing</span><div class="bar"><i style="width:76%"></i></div><b>76%</b></div>
+<div class="barrow"><span>Sustainable places</span><div class="bar"><i style="width:61%"></i></div><b>61%</b></div>
+<div class="barrow"><span>Connected region</span><div class="bar"><i style="width:68%"></i></div><b>68%</b></div>
+<div class="barrow"><span>Trusted council</span><div class="bar"><i style="width:72%"></i></div><b>72%</b></div>
+</div><div class="panel"><h2>Decision record</h2><div class="list"><div class="item"><strong>Hold report approval</strong><span class="meta">Resolve three material exceptions first.</span></div><div class="item"><strong>Escalate overdue submissions</strong><span class="meta">Four business units require accountable-owner action.</span></div><div class="item"><strong>Retain evidence snapshot</strong><span class="meta">Preserve sources used for the approved quarterly view.</span></div></div></div></div>
+<div class="foot">Illustrative output only. No real council, employee, system or performance data is shown.</div>
+</section>
+</div></main></div>
+<script>
+const commitments=[
+['Accessible community services','Community','82','On track'],
+['Road maintenance program','Infrastructure','54','At risk'],
+['Development assessment turnaround','Planning','47','Exception'],
+['Community facilities renewal','Assets','70','Review'],
+['Financial sustainability actions','Corporate','75','On track']];
+const evidence=[
+['EV-104 · Attendance extract','Accessible community services','CRM export','08 Sep','Verified'],
+['EV-101 · Works schedule','Road maintenance program','Project register','02 Sep','Review'],
+['EV-097 · Processing-time extract','Development assessment turnaround','Planning system','07 Sep','Review'],
+['EV-093 · Practical completion approval','Community facilities renewal','Not supplied','—','Missing'],
+['EV-090 · Savings reconciliation','Financial sustainability actions','Finance workbook','06 Sep','Verified']];
+function tag(s){let c=s==='Verified'||s==='On track'?'on':s==='Missing'||s==='Exception'?'off':s==='At risk'?'risk':'review';return '<span class="tag '+c+'">'+s+'</span>'}
+document.getElementById('commitments').innerHTML=commitments.map(x=>'<tr><td><b>'+x[0]+'</b><div class="progress"><i style="width:'+x[2]+'%"></i></div></td><td>'+x[1]+'</td><td>'+x[2]+'%</td><td>'+tag(x[3])+'</td></tr>').join('');
+function renderEvidence(f='all'){let rows=evidence.filter(x=>f==='all'||x[4]===f);document.getElementById('evidenceRows').innerHTML=rows.length?rows.map(x=>'<tr><td><b>'+x[0]+'</b></td><td>'+x[1]+'</td><td>'+x[2]+'</td><td>'+x[3]+'</td><td>'+tag(x[4])+'</td><td><button class="action" onclick="resolve(this,\'Review recorded\')">Review</button></td></tr>').join(''):'<tr><td colspan="6" class="empty">No records in this view.</td></tr>'}
+renderEvidence();document.getElementById('evidenceFilter').onchange=e=>renderEvidence(e.target.value);
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.view).classList.add('active')});
+function resolve(b,label){b.textContent=label;b.classList.add('done');b.disabled=true}
+</script>
+</body></html>
