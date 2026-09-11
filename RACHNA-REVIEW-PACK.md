@@ -1,10 +1,18 @@
 # Council Reporting Studio — Rachna partner POC pack
 
+**Prepared by:** C51 Consulting / Steve Agi  
 **Prepared for:** Rachna Sangwan / RS Consulting  
-**Prepared by:** C51 Consulting  
 **Live POC:** https://c51consulting.github.io/c51-gateway/  
 **Validation date:** 11 September 2026  
 **State:** WORKING BROWSER POC / SYNTHETIC DATA / PARTNER REVIEW
+
+## Proposed delivery relationship
+
+**C51 is the solution provider.** C51 owns and operates the product, configures the selected workflow, implements agreed rules and outputs, provides technical delivery and supports the production service.
+
+**Rachna is the council-facing project lead.** Rachna leads discovery, stakeholder engagement, council communication, workflow interpretation, project coordination and acceptance discussions.
+
+This gives the council one domain-led project lead backed by a dedicated technology provider. White labelling changes the client-facing identity but does not transfer the platform, source code or C51 technical IP.
 
 ## Why this exists
 
@@ -151,8 +159,8 @@ Indicative starting position:
 
 ## Proposed partner model
 
-- RS Consulting leads suitable introductions, workflow interpretation and council relationships.
-- C51 configures, operates and supports the technology.
+- Rachna acts as project lead for suitable council engagements, including discovery, stakeholder management, workflow interpretation, client communication and acceptance coordination.
+- C51 acts as the solution provider, owning the product and delivering configuration, implementation, technology operation and support.
 - C51 retains the platform, source code and technical IP.
 - RS Consulting can present the configured service under an agreed white-label identity.
 - Proposed share for a client originated and actively managed by RS Consulting: 20% of collected net recurring licence revenue.
