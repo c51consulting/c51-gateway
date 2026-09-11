@@ -1,0 +1,7 @@
+commitment_id,commitment,owner,progress,status,evidence_source,evidence_date,reported_date,metric_result,metric_target,comment
+C-101,Community services access,Community,82,On track,CRM export,2026-09-08,2026-09-08,91,90,Participation remains above target
+C-102,Road maintenance program,Infrastructure,54,On track,Project register,2026-09-02,2026-08-30,43,60,Program reported on track despite milestone shortfall
+C-103,Development assessment turnaround,Planning,47,Improved,Planning system,2026-09-07,2026-09-07,38,30,Processing time reported improved
+C-104,Community facilities renewal,Assets,70,Complete,,2026-09-05,2026-09-05,100,100,Practical completion reported without approval evidence
+C-105,Financial sustainability actions,Corporate,75,On track,Finance workbook,2026-09-06,2026-09-06,4.2,4.0,Savings program tracking above target
+C-106,Stormwater inspection cycle,Infrastructure,60,On track,Asset register,2026-07-15,2026-07-15,72,85,Source evidence is outside the current reporting period
