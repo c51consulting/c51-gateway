@@ -1,146 +1,148 @@
-# CouncilFlow — partner review and validation pack
+# Council Reporting Studio — Rachna partner POC pack
 
 **Prepared for:** Rachna Sangwan / RS Consulting  
 **Prepared by:** C51 Consulting  
-**Review environment:** [CouncilFlow demonstrator](https://c51consulting.github.io/c51-gateway/)  
+**Live POC:** https://c51consulting.github.io/c51-gateway/  
 **Validation date:** 11 September 2026  
-**State:** WORKING DEMONSTRATOR / SYNTHETIC DATA / COMMERCIAL MODEL FOR DISCUSSION
+**State:** WORKING BROWSER POC / SYNTHETIC DATA / PARTNER REVIEW
 
-## 1. Purpose
+## Why this exists
 
-CouncilFlow is a council-focused corporate reporting workflow designed to reduce manual collection, reconciliation and review of progress updates across fragmented business systems.
+This POC was built from the council reporting problems discussed with Rachna: fragmented source systems, manual spreadsheet collection, repeated chasing, weak evidence traceability and corporate reporting tools that do not give reviewers a reliable view of what needs judgement.
 
-The demonstrator tests a practical workflow rather than claiming a completed council implementation. It uses fictional council, commitment, employee and performance data.
+It demonstrates an approved reporting overlay across existing council software. It does not require source-system replacement or an API connection for the initial workflow.
 
-The proposed partnership is a white-label channel arrangement:
+## The demonstrated product loop
 
-- RS Consulting introduces and manages suitable council relationships.
-- C51 operates, configures and supports the technology.
-- Each council engagement begins with workflow discovery and validation.
-- Production integrations and delivery commitments are scoped only after the council's systems, controls and security requirements are known.
+1. Load a standard council reporting CSV from any existing system export.
+2. Normalise commitments, owners, progress, evidence and measures.
+3. Compare reported status with evidence and target results.
+4. Identify missing, stale and contradictory information.
+5. Create role-aware notifications and a focused review queue.
+6. Record reviewer action and preserve it in the browser.
+7. Refresh the executive brief and exception schedule.
+8. Download review data and an audit-oriented record.
+9. Print or save the executive output as PDF.
+10. Preview the product under a partner-selected white-label name.
 
-## 2. Problem hypothesis
+## Working capabilities
 
-Council corporate reporting frequently requires officers to collect updates from spreadsheets, project registers, finance systems, planning systems and other disconnected sources. Narrative progress claims may be late, unsupported or inconsistent with source evidence.
+- Real CSV file selection and drag-and-drop intake.
+- One-click synthetic example import.
+- Required-column validation and clear import errors.
+- Automatic normalisation into a common reporting record.
+- Rule-based detection of missing evidence, unsupported completion, reported-measure conflicts and stale evidence.
+- Persistent imported records, review actions and partner branding using browser storage.
+- Role selector for reporting team, responsible officer, manager, executive approver and partner adviser.
+- Notification centre generated from current exceptions.
+- Evidence and exception filters.
+- Review-decision recording.
+- Dynamic reporting-cycle counts and executive narrative.
+- Downloadable CSV review register.
+- Downloadable JSON audit record.
+- Downloadable executive exception CSV.
+- Print and save-to-PDF executive output.
+- Responsive desktop and mobile layout.
+- Synthetic-data and capability-boundary notices.
 
-CouncilFlow provides a controlled path:
+## Functional test results
 
-1. **Gather** structured updates and evidence references.
-2. **Validate** reporting period, ownership and completeness.
-3. **Reconcile** narrative claims against measures, milestones and evidence.
-4. **Review** late, unsupported or inconsistent claims.
-5. **Report** an approved executive view with a traceable decision record.
+| Test | Observed result | State |
+|---|---|---|
+| Public HTTPS deployment | Live product loaded with current release | PASS |
+| Navigation | Six product views opened correctly | PASS |
+| Sample ingestion | Six records loaded from the supplied CSV | PASS |
+| Automatic analysis | Four material exceptions and one evidence gap identified | PASS |
+| Measure reconciliation | On-track claim below target was flagged | PASS |
+| Stale evidence | Old evidence in the imported record was flagged | PASS |
+| Notification generation | Six actionable notifications were created and routed by owner | PASS |
+| Review action | Selected exception changed to Review and Review recorded | PASS |
+| Persistence | Imported data, review state and branding are stored in the browser | PASS |
+| White-label preview | Product changed from Council Reporting Studio to RS Council Reporting | PASS |
+| Executive output | Dynamic narrative, decision state and exception schedule rendered | PASS |
+| Export controls | CSV, JSON, executive CSV and print/PDF controls are available | PASS |
+| Data anonymity | Only fictional council and synthetic operational records are used | PASS |
 
-## 3. Demonstrated workflow
+## What the POC establishes
 
-The current demonstrator includes:
+The product can accept a familiar tabular reporting export and turn it into:
 
-- Corporate overview with delivery confidence, review volume, evidence gaps and material exceptions.
-- Delivery commitments with owner, progress and status.
-- Five-stage reporting workflow and current-cycle controls.
-- Evidence register with source, date and review status.
-- Evidence filtering for verified, review and missing states.
-- Exception queue for missing approvals, contradictory results and overdue submissions.
-- Review actions that record the requested follow-up state.
-- Executive brief with outcome confidence and explicit approval decisions.
-- Synthetic-data and illustrative-output notices.
+- normalised council commitments;
+- evidence and exception controls;
+- role-aware actions;
+- an executive reporting position; and
+- downloadable review and audit outputs.
 
-## 4. Functional validation results
+This demonstrates the product workflow and gives RS Consulting something concrete to test against council practice.
 
-| Test | Action | Expected result | Observed result | State |
-|---|---|---|---|---|
-| Publication | Open the public review URL | Workspace loads over HTTPS | Page loaded with correct title and council overview | PASS |
-| Primary navigation | Open each of the five workspace views | Selected view replaces the previous workspace content | Overview, workflow, evidence, exceptions and executive views all loaded | PASS |
-| Reporting-stage traceability | Open Reporting workflow | Five controlled stages and cycle counts are visible | Gather, Validate, Reconcile, Review and Report displayed with record counts | PASS |
-| Evidence filtering | Select Missing in the evidence register | Only missing evidence remains | EV-093 was isolated with source shown as Not supplied | PASS |
-| Evidence review action | Select Review on the missing evidence row | Action records a visible review state | Control changed to Review recorded and became inactive | PASS |
-| Exception routing | Request evidence for EX-014 | Follow-up state is visibly recorded | Control changed to Evidence requested and became inactive | PASS |
-| Executive summary | Open Executive brief | Exceptions, evidence gaps and approval decision are consolidated | Three exceptions, five gaps and hold-approval decision displayed | PASS |
-| Data anonymity | Review all visible records | No real council, employee or performance data appears | Fictional North Valley Regional Council and synthetic records used | PASS |
+## Honest production boundary
 
-## 5. Workflow result
+The POC runs in the browser and stores its state on the reviewing device. It does not yet provide hosted multi-user accounts, production database storage, real email delivery, council identity integration, document extraction, live source-system automation or certified council security controls.
 
-The demonstrator proves that the proposed user journey can:
+Those capabilities should be implemented only after one council workflow, approved test pack, access model and hosting requirements are confirmed.
 
-- direct attention to reporting exceptions instead of requiring review of every update;
-- connect a reported commitment to an evidence state;
-- distinguish late, missing and contradictory information;
-- record the action taken against an exception; and
-- consolidate reviewed information into an executive decision view.
+## Source-agnostic operating model
 
-It does **not** yet prove automated data collection, integration with council systems, measured time savings, production security, multi-tenant isolation or deployment inside a council environment. Those require a real workflow, approved test data and technical discovery.
+The initial production service can work without APIs through:
 
-## 6. Questions for RS Consulting
+- approved CSV or spreadsheet exports;
+- secure upload;
+- standard reporting templates;
+- a designated reporting inbox;
+- controlled file drops;
+- structured officer submissions; or
+- an anonymised historical reporting pack.
 
-Please assess the demonstrator against a real council reporting cycle:
+Optional APIs and system connectors can be added later where approved and commercially justified.
 
-1. Which reporting step causes the most chasing, re-keying or judgement?
-2. Which systems and spreadsheets usually supply the source information?
-3. Who submits, reviews and approves each quarterly update?
-4. What evidence is required before a progress claim can be accepted?
-5. Which exception types matter most to executives and Councillors?
-6. What must appear in the final corporate or IP&R report?
-7. What would a council need to see before sponsoring a paid proof?
-8. Which one council or anonymised historical reporting pack could validate the workflow?
-9. Should the initial product sit under the RS Consulting brand, a joint brand or the council's own brand?
-10. Does the live Forbes service-review opportunity provide a suitable entry point, subject to its experience, referee, insurance and commercial gates?
+## Review questions for Rachna
 
-## 7. Proposed paid validation path
+1. Which existing council report should this reproduce first?
+2. Which sources create the most chasing and re-keying?
+3. Who submits, reviews and approves the reporting position?
+4. Which exception rules matter most?
+5. What evidence is required before a claim is accepted?
+6. Which council could provide one anonymised historical pack?
+7. Would the white-label offer be easier to sell under RS Consulting, a joint identity or the council's brand?
+8. Who owns the budget for a paid diagnostic?
 
-### Stage 1 — workflow diagnostic
+## Commercial validation path
 
-- One reporting workflow.
-- Current-state map.
-- Source and evidence inventory.
-- Exception and approval rules.
-- Production-readiness assessment.
-- Indicative fee: **A$7,500 plus GST**.
+### 1. Paid workflow diagnostic
 
-### Stage 2 — configured proof
+One reporting workflow, current-state map, source inventory, approval rules and production-readiness assessment.
 
-- One anonymised historical reporting cycle.
-- Configured commitments, owners, measures and gates.
-- Evidence and exception review.
-- Executive output.
-- Scope and price set after Stage 1.
+**Indicative anchor:** A$7,500 plus GST.
 
-### Stage 3 — council licence
+### 2. Configured proof
 
-Draft commercial anchors for discussion:
+One approved historical reporting cycle, configured fields and exception rules, evidence review and agreed executive output.
 
-| Component | Indicative commercial position |
-|---|---:|
-| Configuration and onboarding | A$15,000 plus GST |
-| Core council licence | A$4,950 per month plus GST |
-| Larger council or multi-workflow licence | From A$7,950 per month plus GST |
-| Custom integrations | Separately scoped |
-| Initial licence term | 12 months |
+Pricing follows diagnostic findings.
 
-No council price or delivery commitment is agreed until the workflow and technical requirements are validated.
+### 3. Annual council service
 
-## 8. Draft white-label channel model
+Indicative starting position:
 
-- C51 retains the platform, source code, operating method and technical IP.
-- RS Consulting receives a non-exclusive right to present the configured service under its brand.
-- RS Consulting leads introductions and client relationships where agreed.
-- C51 performs platform configuration, operation, technical delivery and support.
-- RS Consulting retains fees for consulting work it performs.
-- C51 retains fees for technical work, integrations and support it performs.
-- Proposed partner share: **20% of net recurring licence revenue** for clients originated and actively managed by RS Consulting.
-- Proposed referral share: **10% of net recurring licence revenue** for an introduction where C51 manages the opportunity and account.
-- Revenue share applies only to collected licence revenue, excludes GST, refunds and third-party pass-through costs, and continues only while the council remains paid and the agreed partner role is performed.
-- No exclusivity, minimum build obligation, source-code transfer or unfunded custom development is included.
-- Final pricing, discounts, scope, service levels and contractual terms require written agreement.
+- configuration and onboarding: A$15,000 plus GST;
+- core licence: A$4,950 per month plus GST;
+- multi-workflow or larger-council licence: from A$7,950 per month plus GST;
+- custom integrations and specialist delivery: separately scoped.
 
-## 9. Recommended next decision
+## Proposed partner model
 
-Use the next discussion to select one real council reporting workflow and determine:
+- RS Consulting leads suitable introductions, workflow interpretation and council relationships.
+- C51 configures, operates and supports the technology.
+- C51 retains the platform, source code and technical IP.
+- RS Consulting can present the configured service under an agreed white-label identity.
+- Proposed share for a client originated and actively managed by RS Consulting: 20% of collected net recurring licence revenue.
+- Proposed introduction-only share where C51 manages the opportunity: 10% of collected net recurring licence revenue.
+- Each party retains fees for the consulting or technical work it performs.
+- No exclusivity, source-code transfer or unfunded custom development.
+- Final price, scope, service levels and partner terms require written agreement.
 
-- the workflow owner and buyer;
-- the operational consequence of the current manual process;
-- the available historical evidence;
-- the smallest credible paid validation;
-- the preferred white-label presentation; and
-- whether the opportunity gives both parties meaningful revenue, client access and strategic value.
+## Recommended next meeting outcome
 
-**Current commercial state:** QUALIFIED PARTNER HYPOTHESIS / WORKFLOW DEMONSTRATED / BUYER AND PAID PROOF NOT YET CONFIRMED.
+Select one real reporting workflow and one approved historical evidence pack. Confirm the buyer, current operating burden, source formats, approval path and smallest paid proof.
+
+**Commercial state:** WORKING POC / PARTNER FIT TO VALIDATE / NO COUNCIL CUSTOMER, PAID PROOF OR PRODUCTION DEPLOYMENT YET.
