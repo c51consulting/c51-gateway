@@ -1,0 +1,171 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Council Reporting Studio - Partner Product Report</title>
+<style>
+:root{--navy:#15334a;--blue:#1e6d8c;--teal:#168b82;--pale:#eaf3f6;--light:#f4f6f7;--ink:#1e2930;--mid:#647581;--line:#d9e0e4;--green:#21855b}
+*{box-sizing:border-box}body{margin:0;background:#eef2f4;color:var(--ink);font:15px/1.58 Arial,Helvetica,sans-serif}
+.report{max-width:920px;margin:28px auto;background:#fff;box-shadow:0 12px 36px #17364a25;padding:62px 68px}
+.cover{min-height:900px;display:flex;flex-direction:column;justify-content:center}.eyebrow{color:var(--teal);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+h1{font-size:42px;line-height:1.08;margin:12px 0;color:#000}h2{font-size:25px;line-height:1.2;margin:38px 0 12px;color:#000;border-top:1px solid var(--line);padding-top:18px}
+h3{font-size:18px;line-height:1.25;margin:25px 0 8px;color:#000}.lede{font-size:20px;line-height:1.48;color:var(--navy);max-width:750px}
+.meta{margin-top:40px;padding-top:20px;border-top:2px solid var(--navy)}.meta p{margin:4px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:32px 0}.metric{background:var(--pale);padding:18px 10px;text-align:center;border:1px solid var(--line)}.metric b{display:block;font-size:24px;color:var(--teal)}.metric span{font-size:12px}
+.status{font-weight:700;color:var(--green)}.call{font-size:17px;border-left:5px solid var(--teal);padding:10px 0 10px 18px;margin:20px 0}
+table{border-collapse:collapse;width:100%;margin:15px 0 24px;font-size:13px}th{background:var(--navy);color:#fff;text-align:left;padding:10px;border:1px solid var(--line)}td{padding:10px;vertical-align:top;border:1px solid var(--line)}tr:nth-child(even) td{background:var(--light)}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:22px 0}.step{border:1px solid var(--line);background:var(--pale);text-align:center;font-size:12px}.step b{display:block;background:var(--teal);color:#fff;padding:7px;font-size:17px}.step span{display:block;padding:12px 6px;min-height:74px}
+ul,ol{padding-left:23px}li{margin:6px 0}.small{font-size:12px;color:var(--mid)}a{color:var(--blue)}.page-break{break-before:page}
+.footer{margin-top:42px;border-top:1px solid var(--line);padding-top:12px;font-size:11px;color:var(--mid)}
+@media print{@page{size:letter;margin:16mm 17mm}body{background:#fff;font-size:10.3pt}.report{max-width:none;margin:0;padding:0;box-shadow:none}.cover{min-height:245mm}h1{font-size:29pt}h2{font-size:18pt;break-after:avoid}h3{font-size:13pt;break-after:avoid}table{font-size:8.5pt;break-inside:auto}tr{break-inside:avoid}.page-break{break-before:page}.metrics{break-inside:avoid}.flow{break-inside:avoid}.footer{display:none}a{text-decoration:none;color:#1e6d8c}}
+@media(max-width:700px){.report{margin:0;padding:30px 22px}.metrics{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}h1{font-size:34px}}
+</style></head><body><main class="report">
+<section class="cover"><div class="eyebrow">C51 Consulting partner product report</div><h1>Council Reporting Studio</h1>
+<p class="lede">How the evidence-led council reporting overlay works, what it does differently, and how RS Consulting and C51 can take it to market.</p>
+<div class="metrics"><div class="metric"><b>WORKING</b><span>browser POC</span></div><div class="metric"><b>6</b><span>synthetic records processed</span></div><div class="metric"><b>4</b><span>material exceptions detected</span></div><div class="metric"><b>6</b><span>role-aware notifications</span></div></div>
+<div class="meta"><p><b>Prepared for:</b> Rachna Sangwan and Steve Agi</p><p><b>Date:</b> 11 September 2026</p>
+<p><b>Live demonstration:</b> <a href="https://c51consulting.github.io/c51-gateway/">c51consulting.github.io/c51-gateway</a></p>
+<p><b>Current state:</b> <span class="status">WORKING POC / SYNTHETIC DATA / PARTNER REVIEW</span></p></div></section>
+
+<section class="page-break"><h2>Executive position</h2>
+<p class="call">The POC shows a practical way to improve council corporate reporting without replacing existing systems.</p>
+<p>It accepts a familiar reporting export, normalises commitments and owners, challenges unsupported or contradictory claims, creates a focused review queue and produces executive-ready outputs. The commercial opportunity is to configure this workflow around one real council reporting cycle, validate it with an anonymised historical pack and then offer it as a white-labelled managed service led by RS Consulting and operated by C51.</p>
+<h3>What is demonstrated</h3><p>Browser-based CSV ingestion, field validation, normalisation, evidence and measure tests, review actions, role-aware notifications, executive outputs, downloads, local persistence and live white-label preview.</p>
+<h3>What remains production scope</h3><p>Hosted multi-user access, secure database storage, identity and role controls, real message delivery, document extraction, approved source-system connections, council records controls and security assurance.</p>
+<h3>Recommended next decision</h3><p>Use the working POC to select one real reporting workflow, one approved historical evidence pack, the operational owner and the budget holder. Convert that into a paid workflow diagnostic before funding a broader build or negotiating final partner economics.</p></section>
+
+<section class="page-break"><h2>The council reporting problem</h2>
+<p>Councils commonly assemble corporate and service-review reports from spreadsheets, line-of-business systems, email, document stores and officer updates. The problem is often the manual work required to reconcile claims, evidence, measures, ownership and approvals across those sources.</p>
+<ul><li><b>Repeated chasing:</b> reporting teams request missing updates and attachments.</li><li><b>Weak traceability:</b> executive claims do not always point to current evidence or an accountable owner.</li><li><b>Status inconsistency:</b> a service can be reported as on track while its measure is below target.</li><li><b>Late surprises:</b> material exceptions emerge during executive review.</li><li><b>Manual re-keying:</b> staff copy information between spreadsheets, Power BI, documents and reporting tools.</li><li><b>Limited decision focus:</b> reviewers see every update when they need the matters requiring judgement.</li></ul>
+<h3>The product thesis</h3><p>Council Reporting Studio acts as a controlled reporting overlay. Existing systems remain the sources of record. The overlay creates a common reporting record, tests the evidence behind each claim, routes exceptions to the right role and produces a defensible executive reporting position.</p>
+<table><tr><th>It is</th><th>It is not</th></tr>
+<tr><td>An evidence and exception layer over council reporting inputs</td><td>A replacement ERP, records system or data warehouse</td></tr>
+<tr><td>A review workflow that makes ownership and decisions visible</td><td>An autonomous system making governance decisions</td></tr>
+<tr><td>A service that can begin with approved exports and templates</td><td>A requirement to integrate every API before value appears</td></tr>
+<tr><td>A white-label product supported by council consulting</td><td>A generic dashboard sold without workflow design</td></tr></table></section>
+
+<section class="page-break"><h2>How the workflow operates</h2>
+<div class="flow"><div class="step"><b>1</b><span>Receive approved reporting export</span></div><div class="step"><b>2</b><span>Normalise fields and owners</span></div><div class="step"><b>3</b><span>Test evidence and measures</span></div><div class="step"><b>4</b><span>Route exceptions for review</span></div><div class="step"><b>5</b><span>Create executive outputs</span></div><div class="step"><b>6</b><span>Preserve audit record</span></div></div>
+<h3>1 Intake</h3><p>A user loads a CSV through file selection or drag and drop. The POC validates required columns before accepting it. Production can also accept approved spreadsheets, structured officer submissions, controlled file drops, a reporting inbox or an anonymised historical pack. APIs remain optional.</p>
+<h3>2 Normalisation</h3><p>The system converts different source labels into a common record covering commitment, service or action, accountable owner, status, progress, evidence reference, evidence date, metric result and target.</p>
+<h3>3 Evidence and measure tests</h3><p>The POC identifies missing evidence, stale evidence, unsupported completion, an on-track claim below target and statements such as improved that still need interpretation. Production rules would be approved by the council and Rachna.</p>
+<h3>4 Review and accountability</h3><p>The interface explains each exception, its evidence state and owner. A reviewer records a decision rather than silently changing the source claim. The POC preserves that action locally; production would retain it in an authenticated audit history.</p>
+<h3>5 Executive output</h3><p>The executive view updates from reviewed records and presents the reporting position, decision state and exception schedule. Review CSV, executive CSV and audit JSON can be downloaded, and the report can be printed to PDF.</p></section>
+
+<section class="page-break"><h2>The demonstrated magic moment</h2>
+<p>The key transformation is from a messy operational update to a short, decision-ready exception list. The system tests every record and elevates the ones that require judgement.</p>
+<table><tr><th>Imported statement</th><th>System test</th><th>Result for reviewer</th></tr>
+<tr><td>Road maintenance is complete</td><td>Completion evidence has no approval reference</td><td>Exception: completion requires evidence approval</td></tr>
+<tr><td>Development assessment is on track</td><td>Reported measure is below target</td><td>Exception: status conflicts with measure</td></tr>
+<tr><td>Stormwater response improved</td><td>Evidence is older than the currency threshold</td><td>Exception: stale evidence and interpretation required</td></tr>
+<tr><td>Community engagement update supplied</td><td>No evidence reference is present</td><td>Evidence gap routed to the responsible owner</td></tr></table>
+<h3>Verified functional results</h3>
+<table><tr><th>Test</th><th>Observed result</th><th>State</th></tr>
+<tr><td>Public deployment</td><td>Current release loaded over HTTPS</td><td>PASS</td></tr>
+<tr><td>Sample ingestion</td><td>Six synthetic council records loaded</td><td>PASS</td></tr>
+<tr><td>Automatic analysis</td><td>Four material exceptions and one evidence gap identified</td><td>PASS</td></tr>
+<tr><td>Notification generation</td><td>Six actionable notifications routed by owner</td><td>PASS</td></tr>
+<tr><td>Review action</td><td>Selected exception changed to Review and persisted</td><td>PASS</td></tr>
+<tr><td>White-label preview</td><td>Identity changed to RS Council Reporting and persisted</td><td>PASS</td></tr>
+<tr><td>Outputs</td><td>Review CSV, audit JSON, executive CSV and print/PDF controls available</td><td>PASS</td></tr></table>
+<p class="small">These tests prove the browser POC performs the workflow with synthetic data. They do not prove council adoption, production security, quantified savings, integrations or a paid outcome.</p></section>
+
+<section class="page-break"><h2>What is better or different</h2>
+<p>The strongest distinction is not another dashboard. It is a workflow that challenges the quality of the reporting position before information reaches executives.</p>
+<table><tr><th>Approach</th><th>Typical strength</th><th>Common limitation here</th><th>Studio difference</th></tr>
+<tr><td>Spreadsheet consolidation</td><td>Familiar and flexible</td><td>Manual chasing, version risk, weak auditability</td><td>Normalises records and tests evidence</td></tr>
+<tr><td>BI dashboard</td><td>Visualises measures and trends</td><td>Often displays submitted status without testing support</td><td>Elevates contradictions and missing evidence</td></tr>
+<tr><td>Corporate planning platform</td><td>Structured plans and updates</td><td>Manual officer entry and rigid configuration</td><td>Can begin over existing exports</td></tr>
+<tr><td>Data lake or integration program</td><td>Centralises data at scale</td><td>High cost and long lead time before workflow value</td><td>Starts with one workflow; APIs are optional</td></tr>
+<tr><td>Generic AI assistant</td><td>Summarises and drafts</td><td>Can obscure lineage and accountability</td><td>Explicit rules, evidence states, owners and decisions</td></tr>
+<tr><td>Traditional service review</td><td>Expert judgement and context</td><td>Outputs can remain documents and recurring manual work</td><td>Turns the method into a repeatable service</td></tr></table>
+<h3>Defensible advantages</h3>
+<ul><li><b>Workflow before technology:</b> start with a real cycle, approval path and evidence requirement.</li><li><b>Value before integration:</b> start from authorised exports.</li><li><b>Exception-led review:</b> direct attention to records requiring action.</li><li><b>Human accountability:</b> support decisions without claiming to replace governance.</li><li><b>Explainable rules:</b> every flag states its reason and owner.</li><li><b>Partner distribution:</b> combine RS Consulting's council context with C51's technical operation.</li></ul></section>
+
+<section class="page-break"><h2>Data ingestion, notifications and outputs</h2>
+<p>A council does not need to grant broad system access for the first proof. It can provide an approved, minimised export from the current workflow.</p>
+<table><tr><th>Intake method</th><th>Current POC</th><th>Production option</th></tr>
+<tr><td>CSV or spreadsheet export</td><td>CSV works now</td><td>Secure upload with validation and retention controls</td></tr>
+<tr><td>Standard reporting template</td><td>Common schema demonstrated</td><td>Controlled template with version and approval rules</td></tr>
+<tr><td>Reporting inbox</td><td>Specified only</td><td>Approved inbox extracting defined fields and attachments</td></tr>
+<tr><td>Structured officer form</td><td>Specified only</td><td>Authenticated submission with role and due-date controls</td></tr>
+<tr><td>File drop or document pack</td><td>Specified only</td><td>Approved storage location with ingestion logging</td></tr>
+<tr><td>Direct API</td><td>Not required</td><td>Added only where approved and justified</td></tr></table>
+<h3>Data principle</h3><p>Use the minimum information required for the reporting decision. The first validation should use an anonymised historical pack. Production design must agree tenancy, hosting region, retention, deletion, access roles, records obligations, security review and permitted AI processing.</p>
+<h3>Notifications</h3><p>The POC generates an in-product notification centre from current exceptions and routes messages to accountable areas. Production can add approved email, task, Teams or workflow notifications, configured by severity, role, due date and escalation.</p>
+<h3>Outputs</h3><ul><li>Reporting team work queue.</li><li>Responsible officer evidence requests.</li><li>Manager view of material and overdue exceptions.</li><li>Executive brief and exception schedule.</li><li>Review register, executive exception file and audit-oriented event record.</li><li>Partner adviser view for workflow refinement and service-review support.</li></ul></section>
+
+<section class="page-break"><h2>Roles and white-label delivery</h2>
+<table><tr><th>Role</th><th>Primary responsibility</th><th>Product support</th></tr>
+<tr><td>Responsible officer</td><td>Provide update, measure and evidence</td><td>Specific requests and unresolved items</td></tr>
+<tr><td>Reporting team</td><td>Coordinate cycle and validate completeness</td><td>Normalised records, exception queue and due actions</td></tr>
+<tr><td>Accountable manager</td><td>Resolve conflicts and corrective action</td><td>Material exceptions grouped by service and owner</td></tr>
+<tr><td>Executive approver</td><td>Accept reporting position and decisions</td><td>Executive brief and transparent exception schedule</td></tr>
+<tr><td>RS Consulting</td><td>Interpret IP&R and service-review requirements; manage relationship</td><td>Partner view, configuration input and client-ready outputs</td></tr>
+<tr><td>C51</td><td>Configure, operate and support technology</td><td>Technical delivery, rules, operation and support</td></tr></table>
+<h3>White-label model</h3><p>The service can be presented under RS Consulting, a joint identity or the council's brand. White labelling changes the client-facing identity; it does not transfer source code or C51 technical IP. Attribution, support, opportunity ownership, data handling and commercial terms require written agreement.</p>
+<h3>Why the partnership can work</h3><p>Rachna brings direct council service-review and IP&R knowledge, understanding of reporting pain and relevant council relationships. C51 brings the configurable workflow, evidence and exception model, product operation and technical delivery. Together, one-off advisory work can become a recurring managed reporting service.</p>
+<h3>What would weaken it</h3><ul><li>Building broadly before one workflow and buyer are validated.</li><li>Unfunded custom development.</li><li>Promises about integrations, security or savings without evidence.</li><li>Giving away source code or exclusivity before repeatable demand.</li><li>Using Rachna only for leads instead of domain judgement and client management.</li></ul></section>
+
+<section class="page-break"><h2>Commercial path</h2>
+<p>Detailed partner economics are a framework for discussion, not the opening headline. First establish a paid problem.</p>
+<table><tr><th>Stage</th><th>Client outcome</th><th>Indicative position</th><th>Decision gate</th></tr>
+<tr><td>1 Paid workflow diagnostic</td><td>Current-state map, sources, roles, evidence rules, burden and proof plan</td><td>A$7,500 plus GST</td><td>Named buyer, workflow and approved pack</td></tr>
+<tr><td>2 Configured proof</td><td>One historical cycle configured and reviewed</td><td>Priced from diagnostic</td><td>Acceptance, data controls and sponsor agreed</td></tr>
+<tr><td>3 Council service</td><td>Recurring supported overlay</td><td>A$15,000 onboarding; A$4,950/month core licence</td><td>Procurement, security, service levels and term</td></tr>
+<tr><td>4 Expansion</td><td>Additional workflows or units</td><td>From A$7,950/month; custom work separate</td><td>Measured value justifies expansion</td></tr></table>
+<h3>Proposed partner economics</h3>
+<ul><li>RS Consulting leads suitable introductions, council relationships and workflow interpretation.</li><li>C51 configures, operates and supports the technology.</li><li>Proposed actively managed client share: 20% of collected net recurring licence revenue.</li><li>Proposed introduction-only share: 10% of collected net recurring licence revenue.</li><li>Each party retains fees for work it performs.</li><li>C51 retains platform, source code and technical IP.</li><li>No exclusivity, source-code transfer or unfunded custom development.</li><li>Final pricing, service levels and partner terms require written agreement.</li></ul>
+<p class="call">A referral percentage without a qualified workflow, buyer and budget is not yet a commercial opportunity.</p></section>
+
+<section class="page-break"><h2>Production roadmap and acceptance</h2>
+<p>Production work should be driven by the first council's workflow and acceptance criteria, rather than an abstract feature list.</p>
+<table><tr><th>Validation item</th><th>Acceptance evidence</th></tr>
+<tr><td>Workflow definition</td><td>Named cycle, owners, sources, deadlines and approval path</td></tr>
+<tr><td>Historical pack</td><td>Approved anonymised records covering normal and exception cases</td></tr>
+<tr><td>Rule configuration</td><td>Council and RS Consulting approve evidence, currency and conflict rules</td></tr>
+<tr><td>Output design</td><td>Reporting team and executives accept work queue and brief</td></tr>
+<tr><td>Value baseline</td><td>Current chasing, effort, corrections and delay measured</td></tr>
+<tr><td>Proof outcome</td><td>Sample processed reproducibly with traceable exceptions</td></tr></table>
+<h3>Production controls</h3><ul><li>Authenticated users, role-based access and council tenancy.</li><li>Hosted database, backup, retention and deletion.</li><li>Event history for submissions, rules, reviews and approvals.</li><li>Secure upload, validation, malware controls and minimisation.</li><li>Notification delivery, acknowledgement, escalation and failure handling.</li><li>Configuration management for fields, evidence rules and reporting cycles.</li><li>Council-approved hosting, privacy, records and security requirements.</li><li>Service levels, support, incident response and exit arrangements.</li></ul>
+<h3>Proof measures</h3><table><tr><th>Measure</th><th>Baseline</th><th>Proof question</th></tr>
+<tr><td>Coordinator effort</td><td>Hours spent chasing and consolidating</td><td>How much effort remains?</td></tr>
+<tr><td>Evidence completeness</td><td>Unsupported claims at first review</td><td>How many are found before executive review?</td></tr>
+<tr><td>Correction cycle</td><td>Iterations required</td><td>Does targeted routing reduce avoidable iterations?</td></tr>
+<tr><td>Decision readiness</td><td>Material issues arriving late</td><td>Are issues visible earlier with ownership?</td></tr></table></section>
+
+<section class="page-break"><h2>Risks, safeguards and boundaries</h2>
+<table><tr><th>Risk</th><th>Consequence</th><th>Safeguard</th></tr>
+<tr><td>Poor source data</td><td>The product exposes gaps but cannot create evidence</td><td>Define required fields and owners first</td></tr>
+<tr><td>Automation overclaim</td><td>Loss of trust and unsuitable reliance</td><td>Keep human approvals and explain flags</td></tr>
+<tr><td>Integration scope growth</td><td>Long implementation and weak early economics</td><td>Prove value with exports first</td></tr>
+<tr><td>Customisation without reuse</td><td>Margins fall</td><td>Separate reusable configuration from paid bespoke work</td></tr>
+<tr><td>Late security discovery</td><td>Procurement delay or redesign</td><td>Identify data and assurance needs during diagnostic</td></tr>
+<tr><td>Unclear partner ownership</td><td>Client confusion and channel conflict</td><td>Written roles, registration, support and revenue calculation</td></tr>
+<tr><td>No baseline</td><td>Proof cannot establish value</td><td>Measure effort, errors and delay before configuration</td></tr></table>
+<h3>Current capability boundary</h3><p>The POC uses synthetic information and browser storage. It does not yet provide hosted multi-user accounts, production persistence, real email delivery, identity integration, automatic document extraction, live system connections or certified council security controls.</p>
+<h3>Claims not to make yet</h3><ul><li>A council has adopted, purchased or validated the product.</li><li>The workflow has delivered measured savings.</li><li>It integrates with named council systems without testing.</li><li>AI independently approves evidence or governance decisions.</li><li>The POC satisfies council privacy, records, hosting or security requirements.</li><li>Proposed prices or partner shares have been accepted.</li></ul></section>
+
+<section class="page-break"><h2>Recommended Rachna review session</h2>
+<p>The next session should be a product and workflow review. Its goal is to decide whether a real council problem justifies a paid diagnostic.</p>
+<table><tr><th>Time</th><th>Activity</th><th>Decision sought</th></tr>
+<tr><td>0-5 min</td><td>Confirm one familiar reporting problem</td><td>Is it material and recurring?</td></tr>
+<tr><td>5-12 min</td><td>Load synthetic export and show normalisation</td><td>Does the common record reflect practice?</td></tr>
+<tr><td>12-20 min</td><td>Review evidence gaps, conflicts and notifications</td><td>Are the rules useful and explainable?</td></tr>
+<tr><td>20-25 min</td><td>Record a decision and show outputs</td><td>Would outputs support reporting and review?</td></tr>
+<tr><td>25-30 min</td><td>Select first workflow and validation route</td><td>Who can provide the pack, sponsor and budget?</td></tr></table>
+<h3>Questions for Rachna</h3><ol><li>Which existing council report should this reproduce first?</li><li>Which sources create the most chasing and re-keying?</li><li>Who submits, reviews, challenges and approves?</li><li>Which exceptions are genuinely material?</li><li>What evidence is required before a claim is accepted?</li><li>Which council could provide an approved anonymised pack?</li><li>Who owns the operational problem and budget?</li><li>Should the service carry RS Consulting, a joint identity or council branding?</li></ol>
+<h3>Required outcome</h3><p>One named workflow, one approved historical evidence pack and one identified budget owner. If these are absent, remain in discovery and do not fund a broad build.</p></section>
+
+<section class="page-break"><h2>Partner decision summary</h2>
+<p>Council Reporting Studio is ready for serious partner review. It demonstrates the complete browser product loop rather than a static concept. Its differentiation is credible where councils need to improve evidence quality and decision focus across fragmented reporting inputs without starting with a replacement or large integration program.</p>
+<table><tr><th>Validation area</th><th>Decision</th></tr>
+<tr><td>Problem fit</td><td>Is the recurring council problem worth paying to address?</td></tr>
+<tr><td>Workflow fit</td><td>Do the record, evidence, exception and approval concepts match practice?</td></tr>
+<tr><td>Buyer fit</td><td>Which role owns the pain and can commission the diagnostic?</td></tr>
+<tr><td>Partner fit</td><td>Can RS Consulting lead client relationships and workflow interpretation?</td></tr>
+<tr><td>Proof fit</td><td>Can an anonymised historical pack test the product safely?</td></tr>
+<tr><td>Economic fit</td><td>Can the service create measurable value and margin?</td></tr></table>
+<h3>Recommended decision</h3><p class="call"><b>Proceed to partner validation and a paid diagnostic conversation.</b> Do not present the POC as a deployed council platform. Do not negotiate exclusivity or final revenue sharing before there is a credible workflow, buyer and demand signal.</p>
+<h3>Links</h3><p><b>Live POC:</b> <a href="https://c51consulting.github.io/c51-gateway/">https://c51consulting.github.io/c51-gateway/</a></p>
+<p><b>Technical test record:</b> <a href="https://github.com/c51consulting/c51-gateway/blob/main/RACHNA-REVIEW-PACK.md">RACHNA-REVIEW-PACK.md</a></p>
+<p><b>Prepared by:</b> C51 Consulting, Steve Agi, c51consulting.aus@gmail.com</p>
+<div class="footer">Commercial state: WORKING POC | PARTNER FIT TO VALIDATE | NO COUNCIL CUSTOMER, PAID PROOF OR PRODUCTION DEPLOYMENT YET</div></section>
+</main></body></html>
