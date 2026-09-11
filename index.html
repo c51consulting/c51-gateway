@@ -2,116 +2,164 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Council Reporting Workspace — Review Demonstrator</title>
-<meta name="description" content="An anonymised evidence-led council corporate reporting workflow demonstrator.">
+<title>Council Reporting Studio — Evidence-led corporate reporting</title>
+<meta name="description" content="Working proof of concept for source-agnostic council corporate reporting.">
 <style>
-:root{--navy:#102a43;--ink:#243b53;--muted:#627d98;--line:#d9e2ec;--bg:#f4f7fa;--card:#fff;--teal:#087f8c;--blue:#1769aa;--amber:#c27803;--red:#b42318;--green:#26734d}
-*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
-button,select{font:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}
-aside{background:var(--navy);color:#fff;padding:24px 18px;position:sticky;top:0;height:100vh}
-.brand{font-weight:750;font-size:20px;margin-bottom:4px}.demo{font-size:13px;color:#bcccdc;margin-bottom:30px}
-nav button{width:100%;border:0;background:transparent;color:#d9e2ec;text-align:left;padding:11px 12px;border-radius:8px;margin:3px 0;cursor:pointer}
-nav button.active,nav button:hover{background:#1f4664;color:#fff}.aside-note{position:absolute;bottom:22px;left:18px;right:18px;font-size:12px;color:#9fb3c8}
-main{min-width:0}.topbar{background:#fff;border-bottom:1px solid var(--line);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
-.title{font-weight:700}.sample{font-size:13px;color:var(--muted);background:#edf2f7;padding:6px 10px;border-radius:99px}
-.content{padding:28px;max-width:1420px;margin:auto}.view{display:none}.view.active{display:block}
-h1{font-size:28px;line-height:1.2;margin:0 0 6px;color:var(--navy)}.lead{margin:0 0 24px;color:var(--muted)}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
-.metric,.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px #102a4310}
-.metric{padding:18px}.metric b{display:block;font-size:30px;color:var(--navy)}.metric span{font-size:14px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1.7fr 1fr;gap:18px}.panel{padding:20px}.panel h2{font-size:18px;margin:0 0 15px;color:var(--navy)}
-table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:10px;border-bottom:1px solid var(--line)}
-td{padding:12px 10px;border-bottom:1px solid #edf2f7;vertical-align:top}.tag{display:inline-block;font-size:12px;font-weight:650;padding:4px 8px;border-radius:99px}
-.on{background:#e4f5ec;color:var(--green)}.risk{background:#fff3d6;color:#8c5a00}.off{background:#feeceb;color:var(--red)}.review{background:#e7f1fb;color:#155b8e}
-.progress{height:8px;background:#e9eff5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:var(--teal)}
-.list{display:grid;gap:10px}.item{padding:13px;border:1px solid var(--line);border-radius:9px}.item strong{display:block}.meta{font-size:13px;color:var(--muted)}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar select,.toolbar button,.action{border:1px solid #bcccdc;background:#fff;padding:8px 11px;border-radius:7px;cursor:pointer}
-.action{color:#fff;background:var(--blue);border-color:var(--blue);font-size:13px}.action.done{background:var(--green);border-color:var(--green)}
-.callout{border-left:4px solid var(--amber);background:#fff8e6;padding:14px 16px;margin:18px 0;border-radius:0 8px 8px 0}
-.workflow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.step{background:#fff;border:1px solid var(--line);padding:14px;border-radius:10px}.step b{display:block;color:var(--navy);margin-bottom:5px}
-.executive{background:linear-gradient(135deg,#102a43,#174f68);color:#fff;border-radius:14px;padding:26px;margin-bottom:18px}.executive h2{margin:0 0 8px}.executive p{max-width:780px;color:#d9e2ec}
-.barrow{display:grid;grid-template-columns:180px 1fr 48px;align-items:center;gap:10px;margin:13px 0}.bar{height:12px;background:#e6edf3;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal)}
-.foot{font-size:12px;color:var(--muted);margin-top:24px}.empty{padding:30px;text-align:center;color:var(--muted)}
-@media(max-width:900px){.shell{grid-template-columns:1fr}aside{height:auto;position:static}.aside-note{display:none}nav{display:flex;overflow:auto}nav button{width:auto;white-space:nowrap}.metrics{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.topbar,.content{padding:18px}}
+:root{--nav:#0c2941;--nav2:#143f5e;--ink:#17324a;--muted:#5f7487;--line:#d7e1e8;--bg:#f3f6f8;--white:#fff;--blue:#0969a8;--cyan:#0e8392;--green:#217a50;--amber:#a96700;--red:#b42318;--shadow:0 8px 30px rgba(20,47,68,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+aside{background:linear-gradient(180deg,var(--nav),#0a2135);color:#fff;padding:24px 16px;position:sticky;top:0;height:100vh}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em;padding:0 10px}.powered{font-size:12px;color:#9fb3c8;padding:3px 10px 24px}
+nav button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;color:#d9e7ef;padding:11px 12px;border-radius:9px;margin:3px 0;text-align:left}
+nav button:hover,nav button.active{background:var(--nav2);color:#fff}.dot{width:7px;height:7px;border-radius:50%;background:#57c7d4}
+.privacy{position:absolute;bottom:20px;left:18px;right:18px;padding:12px;border:1px solid #294d68;border-radius:10px;font-size:12px;color:#bdd0dc}
+main{min-width:0}.top{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}
+.council{font-weight:750}.top-actions{display:flex;align-items:center;gap:10px}.role{border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff}.notify{border:0;background:#eaf4f7;color:#075c67;border-radius:8px;padding:8px 11px;font-weight:700}
+.content{max-width:1440px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}
+h1{font-size:29px;line-height:1.2;letter-spacing:-.02em;color:var(--nav);margin:0 0 5px}.sub{color:var(--muted);margin:0 0 22px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:800;color:var(--cyan);margin-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.card{padding:17px}.card b{font-size:29px;color:var(--nav);display:block}.card span{color:var(--muted);font-size:14px}
+.panel{padding:20px;margin-bottom:18px}.panel h2{font-size:18px;color:var(--nav);margin:0 0 14px}.grid{display:grid;grid-template-columns:1.65fr 1fr;gap:17px}
+table{width:100%;border-collapse:collapse}th{text-align:left;text-transform:uppercase;font-size:11px;letter-spacing:.06em;color:var(--muted);padding:9px;border-bottom:1px solid var(--line)}td{padding:11px 9px;border-bottom:1px solid #eaf0f4;vertical-align:top}tr:last-child td{border-bottom:0}
+.tag{display:inline-block;border-radius:99px;padding:4px 8px;font-size:12px;font-weight:750;white-space:nowrap}.ok{background:#e6f5ed;color:var(--green)}.warn{background:#fff2d2;color:#835500}.bad{background:#feeceb;color:var(--red)}.info{background:#e8f2fb;color:#145c8e}
+.progress{height:7px;border-radius:99px;background:#e7edf2;margin-top:7px;overflow:hidden}.progress i{height:100%;display:block;background:var(--cyan)}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:8px 11px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.ghost{background:#f5f8fa}.btn.done{background:var(--green);color:#fff;border-color:var(--green)}.btn:disabled{cursor:default;opacity:.9}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.split{display:flex;justify-content:space-between;align-items:center;gap:15px}.small{font-size:13px;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.flow-step{border:1px solid var(--line);border-radius:11px;background:#fff;padding:14px}.flow-step b{display:block;color:var(--nav);margin-bottom:5px}.flow-step span{font-size:13px;color:var(--muted)}
+.drop{border:2px dashed #9db4c3;background:#f8fbfc;border-radius:14px;padding:28px;text-align:center}.drop.drag{border-color:var(--cyan);background:#edfafa}.drop input{display:none}.drop h2{margin:0 0 6px}.drop p{margin:0 0 15px;color:var(--muted)}
+.schema{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}.schema span{background:#eaf0f4;border-radius:7px;padding:8px;font-size:12px}
+.result{border-left:4px solid var(--green);background:#edf8f2;padding:14px 16px;border-radius:0 9px 9px 0;margin:16px 0}.result.error{border-color:var(--red);background:#fff1f0}
+.note{border-left:4px solid var(--amber);background:#fff8e5;padding:13px 15px;border-radius:0 9px 9px 0}.stack{display:grid;gap:10px}.item{border:1px solid var(--line);border-radius:10px;padding:13px}.item strong{display:block}.item .small{margin-top:3px}
+.hero{background:linear-gradient(135deg,#0c2941,#155a70);color:#fff;border-radius:15px;padding:25px;margin-bottom:18px}.hero h2{margin:0 0 7px;font-size:23px}.hero p{color:#d9e7ef;max-width:850px;margin:0}
+.barrow{display:grid;grid-template-columns:190px 1fr 45px;gap:10px;align-items:center;margin:13px 0}.bar{height:11px;background:#e6edf2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--cyan)}
+.modal{position:fixed;inset:0;background:#0b2135aa;display:none;align-items:flex-start;justify-content:flex-end;z-index:20}.modal.open{display:flex}.drawer{width:min(430px,100%);height:100%;background:#fff;padding:24px;overflow:auto}.drawer h2{margin-top:0}.notification{border-left:3px solid var(--amber);padding:10px 12px;margin:10px 0;background:#faf8f1}
+.brandbox{display:grid;grid-template-columns:1fr auto;gap:9px}.brandbox input{border:1px solid var(--line);border-radius:8px;padding:9px 10px}
+.timeline{display:grid;grid-template-columns:100px 1fr;gap:11px;margin:11px 0}.timeline b{color:var(--cyan)}
+.empty{text-align:center;padding:25px;color:var(--muted)}.hide{display:none!important}.foot{font-size:12px;color:var(--muted);margin-top:20px}
+@media(max-width:950px){.app{grid-template-columns:1fr}aside{position:static;height:auto}.privacy{display:none}nav{display:flex;overflow:auto}nav button{width:auto;white-space:nowrap}.top{position:static}.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.schema{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.content{padding:17px}.top{padding:0 16px}.council{font-size:14px}.cards{grid-template-columns:1fr 1fr}.card b{font-size:24px}.role{max-width:140px}.barrow{grid-template-columns:135px 1fr 38px;font-size:13px}.tablewrap{overflow:auto}}
+@media print{aside,.top,.no-print{display:none!important}.app{display:block}.page{display:none!important}#executive{display:block!important}.content{padding:0}.panel,.hero{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
-<div class="shell">
-<aside><div class="brand">CouncilFlow</div><div class="demo">Review demonstrator</div>
+<div class="app">
+<aside><div class="logo" id="brandLogo">Council Reporting Studio</div><div class="powered">Technology operated by C51</div>
 <nav>
-<button class="active" data-view="dashboard">Overview</button>
-<button data-view="workflow">Reporting workflow</button>
-<button data-view="evidence">Evidence register</button>
-<button data-view="exceptions">Exceptions</button>
-<button data-view="executive">Executive brief</button>
+<button class="active" data-page="overview"><span class="dot"></span>Overview</button>
+<button data-page="intake"><span class="dot"></span>Import reporting data</button>
+<button data-page="workflow"><span class="dot"></span>Reporting workflow</button>
+<button data-page="evidence"><span class="dot"></span>Evidence & exceptions</button>
+<button data-page="executive"><span class="dot"></span>Executive output</button>
+<button data-page="partner"><span class="dot"></span>Partner review</button>
 </nav>
-<div class="aside-note">Anonymised synthetic council data<br>Prepared for workflow validation</div></aside>
-<main><div class="topbar"><div class="title">North Valley Regional Council</div><div class="sample">Synthetic review environment</div></div>
+<div class="privacy">POC environment<br>Fictional council and synthetic data only</div></aside>
+<main>
+<header class="top"><div><div class="council">North Valley Regional Council</div><div class="small">Quarter 1 corporate reporting</div></div>
+<div class="top-actions"><select id="role" class="role" aria-label="Current user role"><option>Reporting team</option><option>Responsible officer</option><option>Accountable manager</option><option>Executive approver</option><option>Partner adviser</option></select><button class="notify" id="notifyBtn">Notifications <span id="notifyCount">0</span></button></div></header>
 <div class="content">
-<section id="dashboard" class="view active">
-<h1>Corporate reporting overview</h1><p class="lead">Quarter 1 · Delivery confidence based on submitted progress and supporting evidence.</p>
-<div class="metrics"><div class="metric"><b>68%</b><span>Commitments on track</span></div><div class="metric"><b>7</b><span>Updates requiring review</span></div><div class="metric"><b>5</b><span>Evidence gaps</span></div><div class="metric"><b>3</b><span>Material exceptions</span></div></div>
-<div class="grid">
-<div class="panel"><h2>Delivery commitments</h2><table><thead><tr><th>Commitment</th><th>Owner</th><th>Progress</th><th>Status</th></tr></thead><tbody id="commitments"></tbody></table></div>
-<div class="panel"><h2>Priority attention</h2><div class="list">
-<div class="item"><strong>Community facilities renewal</strong><span class="meta">Milestone reported complete; approval evidence missing.</span></div>
-<div class="item"><strong>Development assessment turnaround</strong><span class="meta">Performance result conflicts with source-system extract.</span></div>
-<div class="item"><strong>Road maintenance program</strong><span class="meta">Quarterly update overdue by 8 days.</span></div>
-</div></div></div>
+<section id="overview" class="page active"><div class="eyebrow">Evidence-led corporate reporting</div><h1>See what is on track—and what the evidence does not support.</h1><p class="sub">One approved overlay across spreadsheets, documents and system exports. No source-system replacement required.</p>
+<div class="cards"><div class="card"><b id="mOn">0%</b><span>Commitments on track</span></div><div class="card"><b id="mReview">0</b><span>Records requiring review</span></div><div class="card"><b id="mGaps">0</b><span>Evidence gaps</span></div><div class="card"><b id="mExceptions">0</b><span>Material exceptions</span></div></div>
+<div class="grid"><div class="panel"><div class="split"><h2>Delivery commitments</h2><button class="btn ghost no-print" data-jump="intake">Import another file</button></div><div class="tablewrap"><table><thead><tr><th>Commitment</th><th>Owner</th><th>Progress</th><th>Control state</th></tr></thead><tbody id="commitments"></tbody></table></div></div>
+<div class="panel"><h2>Priority attention</h2><div id="priority" class="stack"></div></div></div>
 </section>
-<section id="workflow" class="view">
-<h1>Reporting workflow</h1><p class="lead">A controlled path from operational updates to an approved executive report.</p>
-<div class="workflow"><div class="step"><b>1 · Gather</b>Import structured updates and evidence references from business units.</div><div class="step"><b>2 · Validate</b>Check completeness, reporting period, owner and source integrity.</div><div class="step"><b>3 · Reconcile</b>Compare narrative claims with milestones, measures and evidence.</div><div class="step"><b>4 · Review</b>Route exceptions to the responsible officer and accountable executive.</div><div class="step"><b>5 · Report</b>Publish an approved view with a traceable decision record.</div></div>
-<div class="panel"><h2>Current reporting cycle</h2><table><thead><tr><th>Stage</th><th>Records</th><th>Control</th><th>State</th></tr></thead><tbody>
-<tr><td>Business-unit submissions</td><td>34 of 38</td><td>Owner and period confirmed</td><td><span class="tag risk">4 overdue</span></td></tr>
-<tr><td>Evidence validation</td><td>29 of 34</td><td>Source reference attached</td><td><span class="tag risk">5 gaps</span></td></tr>
-<tr><td>Management review</td><td>27 of 34</td><td>Reviewer decision recorded</td><td><span class="tag review">7 pending</span></td></tr>
-<tr><td>Executive approval</td><td>24 of 34</td><td>Approved version retained</td><td><span class="tag on">In progress</span></td></tr>
-</tbody></table></div>
-<div class="callout"><b>Review question:</b> Which step currently creates the most manual chasing, re-keying or judgement for a council reporting team?</div>
+<section id="intake" class="page"><div class="eyebrow">Source-agnostic intake</div><h1>Turn a reporting export into a controlled review queue.</h1><p class="sub">Upload a standard CSV from any existing system or use the supplied synthetic file.</p>
+<div class="panel"><div id="drop" class="drop"><h2>Import council reporting CSV</h2><p>Drop a CSV here or choose a file. Data stays in this browser for the POC.</p><label class="btn primary" for="fileInput">Choose CSV</label> <button id="sampleBtn" class="btn">Load synthetic example</button><input id="fileInput" type="file" accept=".csv,text/csv"></div>
+<div class="schema"><span>commitment</span><span>owner</span><span>progress</span><span>status</span><span>evidence_source</span><span>evidence_date</span><span>metric_result</span><span>metric_target</span></div>
+<div id="importResult"></div></div>
+<div class="grid"><div class="panel"><h2>What happens on import</h2><div class="flow"><div class="flow-step"><b>Register</b><span>Source and reporting period</span></div><div class="flow-step"><b>Normalise</b><span>Map common fields</span></div><div class="flow-step"><b>Reconcile</b><span>Compare claim and evidence</span></div><div class="flow-step"><b>Flag</b><span>Create exceptions</span></div><div class="flow-step"><b>Report</b><span>Refresh outputs</span></div></div></div>
+<div class="panel"><h2>Accepted starting points</h2><div class="stack"><div class="item"><strong>System exports</strong><span class="small">CSV or spreadsheet output from finance, planning, asset and project systems.</span></div><div class="item"><strong>Approved evidence packs</strong><span class="small">Documents are registered for review; document extraction is a production-stage capability.</span></div><div class="item"><strong>Officer submissions</strong><span class="small">Structured forms can fill gaps where no consistent export exists.</span></div></div></div></div>
 </section>
-<section id="evidence" class="view">
-<h1>Evidence register</h1><p class="lead">Every reported result is linked to a source, reviewer and decision state.</p>
-<div class="toolbar"><select id="evidenceFilter"><option value="all">All evidence</option><option value="Verified">Verified</option><option value="Review">Needs review</option><option value="Missing">Missing</option></select></div>
-<div class="panel"><table><thead><tr><th>Evidence</th><th>Commitment</th><th>Source</th><th>Updated</th><th>State</th><th></th></tr></thead><tbody id="evidenceRows"></tbody></table></div>
+<section id="workflow" class="page"><div class="eyebrow">Controlled reporting cycle</div><h1>Every conclusion retains its source and approval path.</h1><p class="sub">The overlay never silently edits a council's source system.</p>
+<div class="flow"><div class="flow-step"><b>1 · Gather</b><span>Approved snapshots and evidence</span></div><div class="flow-step"><b>2 · Validate</b><span>Owner, period and completeness</span></div><div class="flow-step"><b>3 · Reconcile</b><span>Claims against measures and sources</span></div><div class="flow-step"><b>4 · Review</b><span>Human decision on exceptions</span></div><div class="flow-step"><b>5 · Report</b><span>Approved audience-specific output</span></div></div>
+<div class="panel" style="margin-top:18px"><h2>Current cycle control</h2><div class="tablewrap"><table><thead><tr><th>Stage</th><th>Records</th><th>Control</th><th>State</th></tr></thead><tbody id="cycleRows"></tbody></table></div></div>
+<div class="note"><b>Reviewer prompt:</b> Which stage currently creates the most manual chasing, re-keying or judgement in a council reporting cycle?</div>
 </section>
-<section id="exceptions" class="view">
-<h1>Exception queue</h1><p class="lead">Focus review time on claims that are late, unsupported or inconsistent.</p>
-<div class="panel"><table><thead><tr><th>Exception</th><th>Why flagged</th><th>Owner</th><th>Age</th><th>Action</th></tr></thead><tbody>
-<tr><td>EX-014 · Facilities milestone</td><td>Completion claim has no approval record</td><td>Assets</td><td>3 days</td><td><button class="action" onclick="resolve(this,'Evidence requested')">Request evidence</button></td></tr>
-<tr><td>EX-011 · DA processing measure</td><td>Narrative says improved; source extract shows deterioration</td><td>Planning</td><td>5 days</td><td><button class="action" onclick="resolve(this,'Clarification requested')">Request clarification</button></td></tr>
-<tr><td>EX-008 · Roads quarterly update</td><td>Responsible officer has not submitted the period update</td><td>Infrastructure</td><td>8 days</td><td><button class="action" onclick="resolve(this,'Reminder recorded')">Record reminder</button></td></tr>
-</tbody></table></div>
+<section id="evidence" class="page"><div class="eyebrow">Exception-led review</div><h1>Review the records that need judgement.</h1><p class="sub">Missing, late and contradictory information is routed to an accountable person.</p>
+<div class="row no-print" style="margin-bottom:14px"><select id="filter" class="role"><option value="all">All records</option><option value="Verified">Verified</option><option value="Review">Needs review</option><option value="Missing">Missing evidence</option><option value="Exception">Exception</option></select><button id="exportCsv" class="btn">Download review CSV</button><button id="exportJson" class="btn">Download audit JSON</button></div>
+<div class="panel"><div class="tablewrap"><table><thead><tr><th>Commitment</th><th>Evidence</th><th>Reason</th><th>State</th><th class="no-print">Action</th></tr></thead><tbody id="evidenceRows"></tbody></table></div></div>
 </section>
-<section id="executive" class="view">
-<div class="executive"><h2>Quarterly executive brief</h2><p>Overall delivery remains stable, but three material exceptions require management attention before the report can be approved. Confidence is constrained by five evidence gaps and four overdue submissions.</p></div>
-<div class="grid"><div class="panel"><h2>Outcome confidence</h2>
-<div class="barrow"><span>Community wellbeing</span><div class="bar"><i style="width:76%"></i></div><b>76%</b></div>
-<div class="barrow"><span>Sustainable places</span><div class="bar"><i style="width:61%"></i></div><b>61%</b></div>
-<div class="barrow"><span>Connected region</span><div class="bar"><i style="width:68%"></i></div><b>68%</b></div>
-<div class="barrow"><span>Trusted council</span><div class="bar"><i style="width:72%"></i></div><b>72%</b></div>
-</div><div class="panel"><h2>Decision record</h2><div class="list"><div class="item"><strong>Hold report approval</strong><span class="meta">Resolve three material exceptions first.</span></div><div class="item"><strong>Escalate overdue submissions</strong><span class="meta">Four business units require accountable-owner action.</span></div><div class="item"><strong>Retain evidence snapshot</strong><span class="meta">Preserve sources used for the approved quarterly view.</span></div></div></div></div>
-<div class="foot">Illustrative output only. No real council, employee, system or performance data is shown.</div>
+<section id="executive" class="page"><div class="hero"><h2>Quarterly executive brief</h2><p id="execNarrative"></p></div>
+<div class="grid"><div class="panel"><h2>Outcome confidence</h2><div id="bars"></div></div><div class="panel"><h2>Approval decision</h2><div id="decisions" class="stack"></div></div></div>
+<div class="panel"><div class="split"><h2>Executive exception schedule</h2><div class="row no-print"><button id="printBtn" class="btn primary">Print / save PDF</button><button id="execCsv" class="btn">Download executive CSV</button></div></div><div class="tablewrap"><table><thead><tr><th>Commitment</th><th>Owner</th><th>Exception</th><th>Required decision</th></tr></thead><tbody id="execRows"></tbody></table></div></div>
+<div class="foot">Illustrative output generated from synthetic POC data. Public release requires separate council approval.</div>
+</section>
+<section id="partner" class="page"><div class="eyebrow">White-label partner review</div><h1>Configure the experience for your council relationships.</h1><p class="sub">RS Consulting can lead council discovery and client management while C51 operates the technology and delivery.</p>
+<div class="grid"><div class="panel"><h2>Preview partner branding</h2><div class="brandbox"><input id="brandInput" value="RS Council Reporting" aria-label="White-label product name"><button id="brandBtn" class="btn primary">Apply</button></div><p class="small">The product name changes in this browser. Production branding can include partner colours, domains and council-specific report templates.</p>
+<div id="brandResult"></div></div><div class="panel"><h2>Low-risk commercial path</h2><div class="timeline"><b>1 · Diagnose</b><span>Map one real reporting workflow and its current cost.</span></div><div class="timeline"><b>2 · Prove</b><span>Run one approved historical evidence pack.</span></div><div class="timeline"><b>3 · Licence</b><span>Configure an annual council service after value is demonstrated.</span></div></div></div>
+<div class="panel"><h2>Review questions for Rachna</h2><div class="grid"><div class="stack"><div class="item">Which existing council report should this reproduce first?</div><div class="item">Which sources create the most re-keying and chasing?</div><div class="item">Who must submit, review and approve updates?</div></div><div class="stack"><div class="item">Which exception types matter most to executives?</div><div class="item">What evidence is required before a claim is accepted?</div><div class="item">Which council could sponsor a paid workflow diagnostic?</div></div></div></div>
+<div class="note"><b>Commercial state:</b> Working POC and partner proposition. No council integration, customer deployment, revenue or measured saving is claimed.</div>
 </section>
 </div></main></div>
+<div id="modal" class="modal"><div class="drawer"><div class="split"><h2>Notification centre</h2><button id="closeModal" class="btn">Close</button></div><p class="small">Role-aware actions generated from the current imported records.</p><div id="notifications"></div></div></div>
 <script>
-const commitments=[
-['Accessible community services','Community','82','On track'],
-['Road maintenance program','Infrastructure','54','At risk'],
-['Development assessment turnaround','Planning','47','Exception'],
-['Community facilities renewal','Assets','70','Review'],
-['Financial sustainability actions','Corporate','75','On track']];
-const evidence=[
-['EV-104 · Attendance extract','Accessible community services','CRM export','08 Sep','Verified'],
-['EV-101 · Works schedule','Road maintenance program','Project register','02 Sep','Review'],
-['EV-097 · Processing-time extract','Development assessment turnaround','Planning system','07 Sep','Review'],
-['EV-093 · Practical completion approval','Community facilities renewal','Not supplied','—','Missing'],
-['EV-090 · Savings reconciliation','Financial sustainability actions','Finance workbook','06 Sep','Verified']];
-function tag(s){let c=s==='Verified'||s==='On track'?'on':s==='Missing'||s==='Exception'?'off':s==='At risk'?'risk':'review';return '<span class="tag '+c+'">'+s+'</span>'}
-document.getElementById('commitments').innerHTML=commitments.map(x=>'<tr><td><b>'+x[0]+'</b><div class="progress"><i style="width:'+x[2]+'%"></i></div></td><td>'+x[1]+'</td><td>'+x[2]+'%</td><td>'+tag(x[3])+'</td></tr>').join('');
-function renderEvidence(f='all'){let rows=evidence.filter(x=>f==='all'||x[4]===f);document.getElementById('evidenceRows').innerHTML=rows.length?rows.map(x=>'<tr><td><b>'+x[0]+'</b></td><td>'+x[1]+'</td><td>'+x[2]+'</td><td>'+x[3]+'</td><td>'+tag(x[4])+'</td><td><button class="action" onclick="resolve(this,\'Review recorded\')">Review</button></td></tr>').join(''):'<tr><td colspan="6" class="empty">No records in this view.</td></tr>'}
-renderEvidence();document.getElementById('evidenceFilter').onchange=e=>renderEvidence(e.target.value);
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.view).classList.add('active')});
-function resolve(b,label){b.textContent=label;b.classList.add('done');b.disabled=true}
+const KEY='councilflow-poc-v2';
+const seed=[
+{id:'C-101',commitment:'Community services access',owner:'Community',progress:82,status:'On track',evidence:'CRM export',evidenceDate:'2026-09-08',reportedDate:'2026-09-08',result:91,target:90,comment:'Participation remains above target'},
+{id:'C-102',commitment:'Road maintenance program',owner:'Infrastructure',progress:54,status:'On track',evidence:'Project register',evidenceDate:'2026-09-02',reportedDate:'2026-08-30',result:43,target:60,comment:'Program reported on track despite milestone shortfall'},
+{id:'C-103',commitment:'Development assessment turnaround',owner:'Planning',progress:47,status:'Improved',evidence:'Planning system',evidenceDate:'2026-09-07',reportedDate:'2026-09-07',result:38,target:30,comment:'Processing time reported improved'},
+{id:'C-104',commitment:'Community facilities renewal',owner:'Assets',progress:70,status:'Complete',evidence:'',evidenceDate:'2026-09-05',reportedDate:'2026-09-05',result:100,target:100,comment:'Practical completion reported without approval evidence'},
+{id:'C-105',commitment:'Financial sustainability actions',owner:'Corporate',progress:75,status:'On track',evidence:'Finance workbook',evidenceDate:'2026-09-06',reportedDate:'2026-09-06',result:4.2,target:4,comment:'Savings program tracking above target'}];
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{records:seed,actions:{},brand:'Council Reporting Studio',lastImport:'Synthetic starting dataset'};
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function classify(r){
+ let reasons=[];
+ if(!r.evidence)reasons.push('Required evidence not supplied');
+ if(r.status.toLowerCase().includes('complete')&&!r.evidence)reasons.push('Completion requires approval evidence');
+ if(r.status.toLowerCase().includes('on track')&&Number(r.result)<Number(r.target))reasons.push('Claim conflicts with reported measure');
+ if(r.status.toLowerCase().includes('improved')&&Number(r.result)>Number(r.target))reasons.push('Improvement claim requires interpretation');
+ let age=(new Date('2026-09-11')-new Date(r.evidenceDate||r.reportedDate))/86400000;
+ if(age>45)reasons.push('Evidence outside current reporting period');
+ let review=state.actions[r.id];
+ let level=reasons.length?(!r.evidence?'Missing':'Exception'):'Verified';
+ if(review)level='Review';
+ return {reasons,level,action:review}
+}
+function tag(s){let c=s==='Verified'||s==='On track'?'ok':s==='Missing'||s==='Exception'?'bad':s==='Review'||s==='Improved'?'warn':'info';return '<span class="tag '+c+'">'+esc(s)+'</span>'}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function metrics(){let c=state.records.map(classify), on=state.records.filter(r=>r.status==='On track'&&!classify(r).reasons.length).length;return{on:state.records.length?Math.round(on/state.records.length*100):0,review:c.filter(x=>x.level!=='Verified').length,gaps:c.filter(x=>x.reasons.some(y=>y.includes('evidence'))).length,exceptions:c.filter(x=>x.level==='Exception'||x.level==='Missing').length}}
+function render(){
+ document.getElementById('brandLogo').textContent=state.brand;
+ let m=metrics();mOn.textContent=m.on+'%';mReview.textContent=m.review;mGaps.textContent=m.gaps;mExceptions.textContent=m.exceptions;
+ commitments.innerHTML=state.records.map(r=>'<tr><td><b>'+esc(r.commitment)+'</b><div class="progress"><i style="width:'+Math.max(0,Math.min(100,r.progress))+'%"></i></div></td><td>'+esc(r.owner)+'</td><td>'+r.progress+'%</td><td>'+tag(classify(r).level)+'</td></tr>').join('');
+ let issues=state.records.filter(r=>classify(r).reasons.length);
+ priority.innerHTML=issues.length?issues.slice(0,4).map(r=>'<div class="item"><strong>'+esc(r.commitment)+'</strong><span class="small">'+esc(classify(r).reasons[0])+'</span></div>').join(''):'<div class="empty">No priority exceptions.</div>';
+ let submitted=state.records.length, valid=state.records.filter(r=>r.evidence).length, reviewed=state.records.filter(r=>classify(r).level==='Verified'||classify(r).action).length;
+ cycleRows.innerHTML=[['Business-unit submissions',submitted+' received','Owner and period registered','Complete'],['Evidence validation',valid+' of '+submitted,'Source reference checked',submitted-valid+' gaps'],['Management review',reviewed+' of '+submitted,'Reviewer action recorded',submitted-reviewed+' pending'],['Executive approval',Math.max(0,reviewed-1)+' of '+submitted,'Approved version retained',m.exceptions?'Held':'Ready']].map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td><td>'+tag(x[3])+'</td></tr>').join('');
+ renderEvidence();renderExecutive();renderNotifications();
+}
+function renderEvidence(){
+ let f=filter.value||'all', rows=state.records.filter(r=>f==='all'||classify(r).level===f);
+ evidenceRows.innerHTML=rows.length?rows.map(r=>{let c=classify(r);return'<tr><td><b>'+esc(r.commitment)+'</b><div class="small">'+esc(r.owner)+'</div></td><td>'+esc(r.evidence||'Not supplied')+'</td><td>'+esc(c.reasons.join('; ')||'Source and claim aligned')+'</td><td>'+tag(c.level)+'</td><td class="no-print"><button class="btn '+(c.action?'done':'primary')+'" data-review="'+esc(r.id)+'" '+(c.action?'disabled':'')+'>'+(c.action?esc(c.action):'Record review')+'</button></td></tr>'}).join(''):'<tr><td colspan="5" class="empty">No records in this view.</td></tr>';
+ document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{state.actions[b.dataset.review]='Review recorded';save();render()})
+}
+function renderNotifications(){
+ let notes=[];state.records.forEach(r=>{let c=classify(r);c.reasons.forEach(reason=>notes.push({title:r.commitment,reason,owner:r.owner}))});
+ notifications.innerHTML=notes.length?notes.map(n=>'<div class="notification"><strong>'+esc(n.title)+'</strong><div class="small">'+esc(n.reason)+' · Route to '+esc(n.owner)+'</div></div>').join(''):'<div class="empty">No current notifications.</div>';
+ notifyCount.textContent=notes.length;
+}
+function renderExecutive(){
+ let m=metrics();execNarrative.textContent='The current reporting dataset contains '+state.records.length+' commitments. '+m.exceptions+' material exceptions and '+m.gaps+' evidence gaps require management attention before approval.';
+ let groups={};state.records.forEach(r=>{groups[r.owner]=(groups[r.owner]||[]).concat(r)});bars.innerHTML=Object.entries(groups).map(([g,rs])=>{let v=Math.round(rs.reduce((a,r)=>a+r.progress,0)/rs.length);return'<div class="barrow"><span>'+esc(g)+'</span><div class="bar"><i style="width:'+v+'%"></i></div><b>'+v+'%</b></div>'}).join('');
+ decisions.innerHTML='<div class="item"><strong>'+(m.exceptions?'Hold report approval':'Ready for approval')+'</strong><span class="small">'+(m.exceptions?'Resolve material exceptions before release.':'No material exceptions remain.')+'</span></div><div class="item"><strong>Retain evidence snapshot</strong><span class="small">Preserve the imported sources and recorded review actions.</span></div><div class="item"><strong>Use delegated authority</strong><span class="small">An authorised executive makes the final approval decision.</span></div>';
+ let issues=state.records.filter(r=>classify(r).reasons.length);execRows.innerHTML=issues.length?issues.map(r=>'<tr><td>'+esc(r.commitment)+'</td><td>'+esc(r.owner)+'</td><td>'+esc(classify(r).reasons.join('; '))+'</td><td>'+(state.actions[r.id]?'Review action recorded':'Manager review required')+'</td></tr>').join(''):'<tr><td colspan="4" class="empty">No material exceptions.</td></tr>';
+}
+function parseCSV(text){
+ let rows=[],row=[],cell='',q=false;for(let i=0;i<text.length;i++){let ch=text[i],n=text[i+1];if(ch==='"'&&q&&n==='"'){cell+='"';i++}else if(ch==='"'){q=!q}else if(ch===','&&!q){row.push(cell);cell=''}else if((ch==='\n'||ch==='\r')&&!q){if(ch==='\r'&&n==='\n')i++;row.push(cell);if(row.some(x=>x.trim()))rows.push(row);row=[];cell=''}else cell+=ch}row.push(cell);if(row.some(x=>x.trim()))rows.push(row);
+ if(rows.length<2)throw Error('The file must contain a header and at least one record.');
+ let h=rows.shift().map(x=>x.trim().toLowerCase()), required=['commitment','owner','progress','status'];let missing=required.filter(x=>!h.includes(x));if(missing.length)throw Error('Missing required columns: '+missing.join(', '));
+ return rows.map((a,i)=>{let o={};h.forEach((k,j)=>o[k]=(a[j]||'').trim());return{id:o.commitment_id||'IMP-'+(i+1),commitment:o.commitment,owner:o.owner,progress:Number(o.progress)||0,status:o.status,evidence:o.evidence_source||'',evidenceDate:o.evidence_date||'',reportedDate:o.reported_date||'',result:Number(o.metric_result)||0,target:Number(o.metric_target)||0,comment:o.comment||''}})
+}
+function importText(text,name){try{let records=parseCSV(text);state.records=records;state.actions={};state.lastImport=name;save();render();let m=metrics();importResult.innerHTML='<div class="result"><b>Import complete</b><br>'+records.length+' records normalised; '+m.exceptions+' material exceptions and '+m.gaps+' evidence gaps identified. Outputs refreshed.</div>';document.querySelector('[data-page="overview"]').click()}catch(e){importResult.innerHTML='<div class="result error"><b>Import stopped</b><br>'+esc(e.message)+'</div>'}}
+function download(name,type,text){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function csvOut(rows){let h=['commitment_id','commitment','owner','progress','reported_status','evidence_source','control_state','exception_reason','review_action'];return[h.join(','),...rows.map(r=>[r.id,r.commitment,r.owner,r.progress,r.status,r.evidence,classify(r).level,classify(r).reasons.join('; '),classify(r).action||''].map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(','))].join('\n')}
+document.querySelectorAll('nav button,[data-jump]').forEach(b=>b.onclick=()=>{let id=b.dataset.page||b.dataset.jump;document.querySelectorAll('nav button,.page').forEach(x=>x.classList.remove('active'));let nav=document.querySelector('nav [data-page="'+id+'"]');if(nav)nav.classList.add('active');document.getElementById(id).classList.add('active');scrollTo(0,0)});
+filter.onchange=renderEvidence;notifyBtn.onclick=()=>modal.classList.add('open');closeModal.onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+fileInput.onchange=e=>{let f=e.target.files[0];if(f){let rd=new FileReader();rd.onload=()=>importText(rd.result,f.name);rd.readAsText(f)}};
+['dragenter','dragover'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>{let f=e.dataTransfer.files[0];if(f){let rd=new FileReader();rd.onload=()=>importText(rd.result,f.name);rd.readAsText(f)}});
+sampleBtn.onclick=()=>fetch('sample-council-report.csv').then(r=>{if(!r.ok)throw Error('Sample file unavailable');return r.text()}).then(t=>importText(t,'sample-council-report.csv')).catch(e=>importResult.innerHTML='<div class="result error">'+esc(e.message)+'</div>');
+exportCsv.onclick=()=>download('council-review-register.csv','text/csv',csvOut(state.records));execCsv.onclick=()=>download('council-executive-exceptions.csv','text/csv',csvOut(state.records.filter(r=>classify(r).reasons.length)));exportJson.onclick=()=>download('council-audit-record.json','application/json',JSON.stringify({generatedAt:new Date().toISOString(),source:state.lastImport,records:state.records.map(r=>({...r,control:classify(r)}))},null,2));printBtn.onclick=()=>window.print();
+brandBtn.onclick=()=>{let v=brandInput.value.trim();if(v){state.brand=v;save();render();brandResult.innerHTML='<div class="result"><b>White-label preview applied.</b><br>The partner name is stored in this browser.</div>'}};
+role.onchange=()=>{renderNotifications();notifyBtn.focus()};
+render();
 </script>
 </body></html>
