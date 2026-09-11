@@ -12,14 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Wait for GitHub Pages
-        run: sleep 20
       - name: Generate PDF
         run: |
-          google-chrome --headless --no-sandbox --disable-gpu \
+          google-chrome --headless --no-sandbox --disable-gpu --allow-file-access-from-files \
             --print-to-pdf="Council-Reporting-Studio-Rachna-Partner-Report.pdf" \
             --print-to-pdf-no-header \
-            "https://c51consulting.github.io/c51-gateway/rachna-partner-report.html"
+            "file://$GITHUB_WORKSPACE/rachna-partner-report.html"
           test -s Council-Reporting-Studio-Rachna-Partner-Report.pdf
       - name: Commit PDF
         run: |
