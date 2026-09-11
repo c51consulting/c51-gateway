@@ -81,6 +81,26 @@ The POC runs in the browser and stores its state on the reviewing device. It doe
 
 Those capabilities should be implemented only after one council workflow, approved test pack, access model and hosting requirements are confirmed.
 
+## Current data entry and customisation
+
+The live POC accepts a correctly structured CSV through file selection or drag-and-drop. Rachna can load the synthetic example, review records and exceptions, record review decisions, change the white-label product name and export review and executive outputs.
+
+The current POC does not include an on-screen form for manually creating or editing individual reporting records. Manual data entry is therefore a configurable proof or production feature, not a current operational capability.
+
+For each selected use case, the operating flow can be configured around the actual council process, including:
+
+- record types, field names and service categories;
+- manual forms, CSV templates and approved intake channels;
+- draft, submission, evidence-request, review, approval and closure stages;
+- council roles, owners and decision rights;
+- evidence requirements, currency thresholds and exception rules;
+- severity, due dates and escalation paths;
+- in-product, email or Teams notifications;
+- executive briefs, IP&R outputs, service-review packs, registers and audit exports; and
+- RS Consulting, joint or council branding and terminology.
+
+Customisation should be agreed during the paid workflow diagnostic. This preserves a reusable product core while configuring the workflow around a defined council problem.
+
 ## Source-agnostic operating model
 
 The initial production service can work without APIs through:
