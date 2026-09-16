@@ -127,14 +127,14 @@ document.querySelectorAll('.node').forEach(n=>n.classList.toggle('hot',top.some(
 bars.innerHTML=state.ranking.map(([d,v])=>'<div class="metric-row"><span>'+d+'</span><div class="bar"><i class="'+(v>=4?'high':'')+'" style="width:'+(v*20)+'%"></i></div><b>'+v+'</b></div>').join('');
 leadRole.innerHTML='<strong>Lead with '+top[0][0]+'.</strong><br>Bring '+top.slice(1).map(x=>x[0]).join(' and ')+' into the same decision sequence rather than creating parallel workstreams.';
 priorities.innerHTML=top.map(([d,v],i)=>'<div class="item rank"><b>'+(i+1)+'</b><div><strong>'+d+' '+(i===0?'— accountable lead':'— supporting dependency')+'</strong><small>'+guidance[d]+'</small></div></div>').join('');show('map')}
-analyse.onclick=analyse;
+document.getElementById('analyse').onclick=analyse;
 function makeBrief(){let top=state.ranking.slice(0,3),avg=Object.values(state.scores).reduce((a,b)=>a+b,0)/6,evidence=[...document.querySelectorAll('.pill input:checked')].map(x=>x.value);let name=company.value.trim()||'Founder-led company';briefTitle.textContent=name+' — Leadership Dependency Brief';riskTag.innerHTML='<span class="tag '+level(avg)+'">'+(avg>=4?'Material leadership dependency':avg>=3?'Connected leadership gap':'Focused intervention')+'</span>';
 finding.textContent='The current '+state.symptom.toLowerCase()+' is most likely an operating signal rather than an isolated functional problem. '+top[0][0]+' should lead the response, with '+top[1][0]+' and '+top[2][0]+' addressed in the same decision model. '+(evidence.length?'Available evidence includes '+evidence.join(', ')+'.':'No core evidence pack has yet been identified, so establishing a reliable baseline is the first task.');
 briefSymptom.textContent=state.symptom+' · '+stage.value+' · '+revenue.value+' · runway: '+runway.value+'.';briefDecision.textContent=decision.value.trim()||'Clarify the material decision required in the next 30–90 days.';
 briefPriorities.innerHTML=top.map(([d,v],i)=>'<div class="item rank"><b>'+(i+1)+'</b><div><strong>'+d+' · '+label(v)+'</strong><small>'+guidance[d]+'</small></div></div>').join('');
 d30.textContent='Validate the model, KPI definitions and evidence behind '+top[0][0].toLowerCase()+', then quantify the consequence of the current gap.';d60.textContent='Resolve the cross-functional decisions linking '+top[0][0]+', '+top[1][0]+' and '+top[2][0]+'. Assign owners and thresholds.';d90.textContent='Install a recurring forecast, operating and board rhythm with traceable KPIs, decisions and exceptions.';shape.textContent='One accountable Evalesco lead across '+top[0][0]+', supported by targeted '+top[1][0]+' and '+top[2][0]+' capability as required — avoiding three disconnected advisory engagements.';
 questions.innerHTML=top.map(([d])=>'<div class="item"><strong>'+d+'</strong><small>'+questions[d]+'</small></div>').join('');show('brief')}
-makeBrief.onclick=makeBrief;
+document.getElementById('makeBrief').onclick=makeBrief;
 copyBrief.onclick=async()=>{let text=briefTitle.textContent+'\n\n'+finding.textContent+'\n\nPriorities: '+state.ranking.slice(0,3).map(x=>x[0]).join(', ')+'\n\nNext decision: '+briefDecision.textContent;try{await navigator.clipboard.writeText(text);copyBrief.textContent='Copied'}catch(e){copyBrief.textContent='Copy unavailable'}};
 </script>
 </body></html>
